@@ -8,7 +8,7 @@ public final class BuildConfig {
     public static final String APPLICATION_ID = "com.chiller3.bcr";
     public static final String BUILD_TYPE = "release";
     public static final boolean DEBUG = false;
-    
+    public static final String VERSION_NAME = "1.50";
     // 对应 Gradle 中的 buildConfigField
     public static final String PROJECT_URL_AT_COMMIT = "https://github.com/chenxiaolong/BCR";
     public static final String PROVIDER_AUTHORITY = "com.chiller3.bcr.provider";

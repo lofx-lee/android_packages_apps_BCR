@@ -10,7 +10,10 @@ android_app {
     certificate: "platform",
     privileged: true,
     product_specific: true,
+    sdk_version: "current",
     
+    kotlincflags: ["-Xplugin=external/kotlinc/lib/parcelize-compiler.jar"],
+
     static_libs: [
         "androidx.core_core-ktx",
         "androidx.appcompat_appcompat",
@@ -21,25 +24,21 @@ android_app {
         "androidx.recyclerview_recyclerview",
         "com.google.android.material_material",
         "libphonenumber",
+        "kotlin-parcelize-runtime",
         "bcr-kudzu-prebuilt",
         "bcr-kotlinx-serialization-core",
         "bcr-kotlinx-serialization-json",
     ],
 
-    required: ["privapp-permissions-com.chiller3.bcr.xml"],
+    required: ["privapp-permissions-com.chiller3.bcr.xml"
+    "config-com.chiller3.bcr.xml",
+    "preinstalled-packages-platform-bcr.xml",
+    ],
 
     optimize: {
         enabled: true,
         proguard_flags_files: ["proguard.flags"],
     },
-}
-
-prebuilt_etc {
-    name: "privapp-permissions-com.chiller3.bcr.xml",
-    sub_dir: "permissions",
-    src: "privapp-permissions-com.chiller3.bcr.xml",
-    filename_from_src: true,
-    product_specific: true,
 }
 
 java_import {
@@ -58,4 +57,28 @@ java_import {
     name: "bcr-kotlinx-serialization-json",
     jars: ["libs/kotlinx-serialization-json-jvm-1.10.0.jar"],
     sdk_version: "current",
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-com.chiller3.bcr.xml",
+    sub_dir: "permissions",
+    src: "privapp-permissions-com.chiller3.bcr.xml",
+    filename_from_src: true,
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "config-com.chiller3.bcr.xml",
+    sub_dir: "sysconfig",
+    src: "config-com.chiller3.bcr.xml",
+    filename_from_src: true,
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "preinstalled-packages-platform-bcr.xml",
+    sub_dir: "sysconfig",
+    src: "preinstalled-packages-platform-bcr.xml",
+    filename_from_src: true,
+    product_specific: true,
 }
